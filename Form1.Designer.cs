@@ -38,6 +38,7 @@ namespace MuteMicrophone
             this.label1 = new System.Windows.Forms.Label();
             this.lb_Status = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.btn_Close = new System.Windows.Forms.Button();
             this.pB_MicStatusImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pB_MicStatusImage)).BeginInit();
             this.SuspendLayout();
@@ -98,6 +99,7 @@ namespace MuteMicrophone
             // rdb_Press
             // 
             this.rdb_Press.AutoSize = true;
+            this.rdb_Press.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdb_Press.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.rdb_Press.Location = new System.Drawing.Point(12, 293);
             this.rdb_Press.Name = "rdb_Press";
@@ -111,6 +113,7 @@ namespace MuteMicrophone
             // 
             this.rdb_OnOff.AutoSize = true;
             this.rdb_OnOff.Checked = true;
+            this.rdb_OnOff.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdb_OnOff.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.rdb_OnOff.Location = new System.Drawing.Point(69, 293);
             this.rdb_OnOff.Name = "rdb_OnOff";
@@ -158,6 +161,22 @@ namespace MuteMicrophone
             this.button1.Text = "Off";
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // btn_Close
+            // 
+            this.btn_Close.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Close.FlatAppearance.BorderSize = 0;
+            this.btn_Close.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btn_Close.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Close.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_Close.Image = global::MuteMicrophone.Properties.Resources.close_window_26px;
+            this.btn_Close.Location = new System.Drawing.Point(200, 3);
+            this.btn_Close.Name = "btn_Close";
+            this.btn_Close.Size = new System.Drawing.Size(26, 26);
+            this.btn_Close.TabIndex = 10;
+            this.btn_Close.UseVisualStyleBackColor = false;
+            // 
             // pB_MicStatusImage
             // 
             this.pB_MicStatusImage.Image = global::MuteMicrophone.Properties.Resources.microphone_80px;
@@ -175,6 +194,7 @@ namespace MuteMicrophone
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(228, 322);
+            this.Controls.Add(this.btn_Close);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lb_Status);
             this.Controls.Add(this.label1);
@@ -209,6 +229,7 @@ namespace MuteMicrophone
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lb_Status;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Close;
     }
 }
 
