@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Gma.System.MouseKeyHook;
 using System.Collections.Generic;
 using System.Threading;
+using System.IO;
 
 namespace MuteMicrophone
 {
@@ -17,6 +18,9 @@ namespace MuteMicrophone
 
         List<String> recordedKeysTemp1 = new List<String>();
         List<String> recordedKeysTemp2 = new List<String>();
+
+        System.Drawing.Icon muteIcon = new System.Drawing.Icon(Path.Combine(Application.StartupPath, "MuteMicrophoneMute.ico"));
+        System.Drawing.Icon unmuteIcon = new System.Drawing.Icon(Path.Combine(Application.StartupPath, "MuteMicrophone.ico"));
 
         Thread muteCheckThread = null;
 
@@ -120,9 +124,11 @@ namespace MuteMicrophone
             ControlMute();
             ControlSelectedBtn();
             LoadKeys();
-            CheckAppState();
+            if (!Properties.Settings.Default.AppState)
+                btnAppState_Click(null, null);
             importLists();
-            startMainListener();            
+            startMainListener();
+            checkIcon();
         }
 
         private void KeyMute(KeyEventArgs e)
@@ -151,6 +157,22 @@ namespace MuteMicrophone
             }
         }
 
+        private void checkIcon()
+        {
+            if (Transaction.isMute())
+            {
+                nfI.Icon = muteIcon;
+                Icon = muteIcon;
+            }
+
+            else
+            {
+                nfI.Icon = unmuteIcon;
+                Icon = unmuteIcon;
+            }
+                
+        }
+
         private void MouseMute(MouseEventExtArgs e)
         {
             if (recordedKeysTemp1.Contains(e.Button.ToString()) || recordedKeysTemp2.Contains(e.Button.ToString()))
@@ -163,6 +185,7 @@ namespace MuteMicrophone
                         Transaction.MuteUnMute();
                         ControlMute();
                         importLists();
+                        checkIcon();
                     }
                 }
             }
@@ -237,6 +260,7 @@ namespace MuteMicrophone
         {
             Transaction.MuteUnMute();
             ControlMute();
+            checkIcon();
         }
 
         private void rdb_OnOff_CheckedChanged(object sender, EventArgs e)
@@ -421,29 +445,25 @@ namespace MuteMicrophone
             btn_RecordStop.Enabled = false;
             closeMainListener();
             StopThread();
+            btnAppState.Text = "On";
         }
 
-        private void OpenAll()
+        public void OpenAll()
         {
             btn_MuteUnmuteMic.Enabled = true;
             btn_Record.Enabled = true;
             btn_RecordStop.Enabled = true;
             startMainListener();
             StartThread();
+            btnAppState.Text = "Off";
         }
 
         private void CheckAppState()
         {
             if (Properties.Settings.Default.AppState)
-            {
-                btnAppState.Text = "Off";
                 OpenAll();
-            }
             else
-            {
-                btnAppState.Text = "On";
                 CloseAll();
-            }
         }
 
         private void btnAppState_Click(object sender, EventArgs e)
@@ -455,6 +475,17 @@ namespace MuteMicrophone
 
             Properties.Settings.Default.Save();
             CheckAppState();
+        }
+
+        private void btn_About_Click(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.AppState)
+            {
+                btnAppState_Click(null, null);
+                StopThread();
+            }
+            var frm = new About(this);
+            frm.ShowDialog();
         }
     }
 }

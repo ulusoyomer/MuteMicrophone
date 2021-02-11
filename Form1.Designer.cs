@@ -47,6 +47,7 @@ namespace MuteMicrophone
             this.btn_MinWindow = new System.Windows.Forms.Button();
             this.btn_Close = new System.Windows.Forms.Button();
             this.pB_MicStatusImage = new System.Windows.Forms.PictureBox();
+            this.btn_About = new System.Windows.Forms.Button();
             this.cntMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pB_MicStatusImage)).BeginInit();
             this.SuspendLayout();
@@ -245,12 +246,28 @@ namespace MuteMicrophone
             this.pB_MicStatusImage.TabIndex = 0;
             this.pB_MicStatusImage.TabStop = false;
             // 
+            // btn_About
+            // 
+            this.btn_About.BackColor = System.Drawing.Color.Transparent;
+            this.btn_About.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_About.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(114)))), ((int)(((byte)(44)))));
+            this.btn_About.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_About.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btn_About.Location = new System.Drawing.Point(12, 12);
+            this.btn_About.Name = "btn_About";
+            this.btn_About.Size = new System.Drawing.Size(54, 23);
+            this.btn_About.TabIndex = 13;
+            this.btn_About.Text = "About";
+            this.btn_About.UseVisualStyleBackColor = false;
+            this.btn_About.Click += new System.EventHandler(this.btn_About_Click);
+            // 
             // Mainform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(228, 322);
+            this.Controls.Add(this.btn_About);
             this.Controls.Add(this.btn_MinWindow);
             this.Controls.Add(this.btn_Close);
             this.Controls.Add(this.btnAppState);
@@ -296,6 +313,7 @@ namespace MuteMicrophone
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.NotifyIcon nfI;
         private System.Windows.Forms.Button btn_MinWindow;
+        private System.Windows.Forms.Button btn_About;
     }
 }
 
