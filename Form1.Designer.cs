@@ -29,6 +29,8 @@ namespace MuteMicrophone
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mainform));
             this.btn_Record = new System.Windows.Forms.Button();
             this.btn_RecordStop = new System.Windows.Forms.Button();
             this.btn_MuteUnmuteMic = new System.Windows.Forms.Button();
@@ -37,9 +39,15 @@ namespace MuteMicrophone
             this.rdb_OnOff = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.lb_Status = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAppState = new System.Windows.Forms.Button();
+            this.cntMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.muteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nfI = new System.Windows.Forms.NotifyIcon(this.components);
+            this.btn_MinWindow = new System.Windows.Forms.Button();
             this.btn_Close = new System.Windows.Forms.Button();
             this.pB_MicStatusImage = new System.Windows.Forms.PictureBox();
+            this.cntMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pB_MicStatusImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -146,20 +154,68 @@ namespace MuteMicrophone
             this.lb_Status.TabIndex = 8;
             this.lb_Status.Text = "----";
             // 
-            // button1
+            // btnAppState
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(114)))), ((int)(((byte)(44)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(114)))), ((int)(((byte)(44)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(133, 272);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 40);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Off";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAppState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(114)))), ((int)(((byte)(44)))));
+            this.btnAppState.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAppState.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(114)))), ((int)(((byte)(44)))));
+            this.btnAppState.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAppState.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnAppState.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAppState.Location = new System.Drawing.Point(133, 272);
+            this.btnAppState.Name = "btnAppState";
+            this.btnAppState.Size = new System.Drawing.Size(84, 40);
+            this.btnAppState.TabIndex = 9;
+            this.btnAppState.Text = "Off";
+            this.btnAppState.UseVisualStyleBackColor = false;
+            this.btnAppState.Click += new System.EventHandler(this.btnAppState_Click);
+            // 
+            // cntMenu
+            // 
+            this.cntMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.muteToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.cntMenu.Name = "cntMenu";
+            this.cntMenu.Size = new System.Drawing.Size(125, 48);
+            // 
+            // muteToolStripMenuItem
+            // 
+            this.muteToolStripMenuItem.Name = "muteToolStripMenuItem";
+            this.muteToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.muteToolStripMenuItem.Text = "View App";
+            this.muteToolStripMenuItem.Click += new System.EventHandler(this.muteToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // nfI
+            // 
+            this.nfI.ContextMenuStrip = this.cntMenu;
+            this.nfI.Icon = ((System.Drawing.Icon)(resources.GetObject("nfI.Icon")));
+            this.nfI.Text = "Settings";
+            this.nfI.Visible = true;
+            this.nfI.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.nfI_MouseDoubleClick);
+            // 
+            // btn_MinWindow
+            // 
+            this.btn_MinWindow.BackColor = System.Drawing.Color.Transparent;
+            this.btn_MinWindow.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_MinWindow.FlatAppearance.BorderSize = 0;
+            this.btn_MinWindow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btn_MinWindow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btn_MinWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_MinWindow.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_MinWindow.Image = global::MuteMicrophone.Properties.Resources.minus_26px;
+            this.btn_MinWindow.Location = new System.Drawing.Point(168, 3);
+            this.btn_MinWindow.Name = "btn_MinWindow";
+            this.btn_MinWindow.Size = new System.Drawing.Size(26, 26);
+            this.btn_MinWindow.TabIndex = 12;
+            this.btn_MinWindow.UseVisualStyleBackColor = false;
+            this.btn_MinWindow.Click += new System.EventHandler(this.btn_MinWindow_Click);
             // 
             // btn_Close
             // 
@@ -176,6 +232,7 @@ namespace MuteMicrophone
             this.btn_Close.Size = new System.Drawing.Size(26, 26);
             this.btn_Close.TabIndex = 10;
             this.btn_Close.UseVisualStyleBackColor = false;
+            this.btn_Close.Click += new System.EventHandler(this.btn_Close_Click);
             // 
             // pB_MicStatusImage
             // 
@@ -194,8 +251,9 @@ namespace MuteMicrophone
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(228, 322);
+            this.Controls.Add(this.btn_MinWindow);
             this.Controls.Add(this.btn_Close);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAppState);
             this.Controls.Add(this.lb_Status);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rdb_OnOff);
@@ -206,11 +264,14 @@ namespace MuteMicrophone
             this.Controls.Add(this.btn_Record);
             this.Controls.Add(this.pB_MicStatusImage);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Mainform";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MuteMicrophone";
             this.Load += new System.EventHandler(this.Mainform_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.Move += new System.EventHandler(this.Mainform_Move);
+            this.cntMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pB_MicStatusImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -228,8 +289,13 @@ namespace MuteMicrophone
         private System.Windows.Forms.RadioButton rdb_OnOff;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lb_Status;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAppState;
         private System.Windows.Forms.Button btn_Close;
+        private System.Windows.Forms.ContextMenuStrip cntMenu;
+        private System.Windows.Forms.ToolStripMenuItem muteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.NotifyIcon nfI;
+        private System.Windows.Forms.Button btn_MinWindow;
     }
 }
 
